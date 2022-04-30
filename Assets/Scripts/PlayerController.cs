@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     MainManager mainManager;
 
+    FloatingJoystick joystick;
+
     Rigidbody thisRigidbody;
 
     [SerializeField] float speed;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         mainManager = GameObject.Find("Main Manager").GetComponent<MainManager>();
+        joystick = GameObject.Find("Floating Joystick").GetComponent<FloatingJoystick>();
     }
 
     private void Start()
@@ -25,8 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = joystick.Vertical;
+        horizontalInput = joystick.Horizontal;
     }
 
     private void FixedUpdate()
